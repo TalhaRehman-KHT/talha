@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+body {
+  @apply bg-neutral-800 sm:bg-gradient-to-r sm:from-neutral-700 sm:to-neutral-900;
+}
+
+
+@layer components {
+  .card {
+    @apply bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition;
+  }
+
+  .btn-primary {
+    @apply bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700;
+  }
+
+  .nav {
+    @apply flex items-center justify-between backdrop-blur-lg p-5 border-b-2 border-neutral-600;
+  }
+
+  .ul {
+    @apply flex items-center justify-center gap-5 text-2xl text-white;
+  }
+
+  .anker {
+    @apply flex items-center gap-2 hover:font-semibold hover:text-green-300;
+  }
+
+  .footer {
+    @apply fixed bottom-0 left-0 w-full bg-neutral-800 p-3 flex justify-around items-center text-white lg:hidden backdrop-blur-lg border-t-2 border-neutral-600;
+  }
+
+  /* 🔹 Home Section */
+  .home-section {
+    @apply min-h-screen flex flex-col lg:flex-row items-center justify-center gap-10 px-6 py-12 text-white;
+  }
+
+  .profile-pic {
+    @apply w-40 h-40 lg:w-60 lg:h-60 rounded-full overflow-hidden border-4 border-indigo-500 shadow-lg;
+  }
+
+  .home-text {
+    @apply flex flex-col items-center lg:items-start text-center lg:text-left max-w-xl gap-4;
+  }
+
+  .home-title {
+    @apply text-2xl lg:text-4xl font-bold;
+  }
+
+  .home-subtitle {
+    @apply text-lg lg:text-xl text-indigo-300;
+  }
+
+  .home-para {
+    @apply text-sm lg:text-base text-gray-200 leading-relaxed;
+  }
+
+  .btn-hire {
+    @apply bg-neutral-600 p-3 rounded-lg hover:text-green-300 hover:font-semibold mt-4;
+  }
+
+  .skills-container {
+    @apply flex flex-wrap gap-3 mt-6 justify-center lg:justify-start;
+  }
+
+  .skill-badge {
+    @apply bg-neutral-700 text-white px-4 py-2 rounded-lg shadow hover:bg-indigo-600 transition;
+  }
+
+  /* Certificate Page */
+  .certificate-section {
+    @apply min-h-screen flex flex-col items-center justify-center gap-10 px-6 py-12 text-white;
+  }
+
+  .certificate-title {
+    @apply text-3xl lg:text-4xl font-bold mb-8 text-white;
+  }
+
+  .certificate-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl;
+  }
+
+  .certificate-card {
+    @apply bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition;
+  }
+
+  .certificate-img {
+    @apply w-full h-64 object-cover;
+  }
+
+
+  /* Projects Section */
+  .project-section {
+    @apply min-h-screen flex flex-col items-center justify-center gap-10 px-6 py-12 text-white;
+  }
+
+  .project-title {
+    @apply text-3xl lg:text-4xl font-bold mb-8 text-white;
+  }
+
+  .project-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl;
+  }
+
+  .project-card {
+    @apply bg-transparent rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition flex flex-col;
+  }
+
+  .project-img {
+    @apply w-full h-48 object-contain;
+  }
+
+  .project-content {
+    @apply p-6 flex flex-col gap-4 flex-grow;
+  }
+
+  .project-heading {
+    @apply text-xl font-semibold text-white;
+  }
+
+  .project-para {
+    @apply text-sm text-gray-300 leading-relaxed;
+  }
+
+  .project-links {
+    @apply mt-auto flex gap-4;
+  }
+
+  .project-btn {
+    @apply bg-neutral-700 text-white px-4 py-2 rounded-lg hover:bg-green-300 hover:text-neutral-600 transition text-center text-sm;
+  }
+
+
+  .contact-section {
+    @apply min-h-screen flex flex-col items-center justify-center gap-10 px-6 py-12 text-white;
+  }
+
+  .contact-title {
+    @apply text-3xl lg:text-4xl font-bold mb-6 text-white;
+  }
+
+  .contact-icons {
+    @apply flex flex-wrap justify-center gap-6;
+  }
+
+  .contact-icon {
+    @apply flex items-center gap-2 bg-neutral-800 text-white px-4 py-2 rounded-lg shadow hover:bg-green-300 hover:text-neutral-700 transition;
+  }
+
+  .contact-form {
+    @apply w-full max-w-lg flex flex-col gap-4 bg-transparent backdrop-blur-lg p-6 rounded-xl shadow-lg;
+  }
+
+  .form-input {
+    @apply w-full p-3 rounded-lg border border-gray-600 bg-neutral-800 text-white focus:outline-none focus:ring-2 focus:ring-neutral-600;
+  }
+
+  .form-textarea {
+    @apply w-full p-3 rounded-lg border border-gray-600 bg-neutral-800 text-white focus:outline-none focus:ring-2 focus:ring-neutral-600;
+  }
+
+  .form-btn {
+    @apply bg-neutral-700 text-white px-4 py-2 rounded-lg hover:bg-green-300 hover:text-neutral-600 transition font-semibold;
+  }
+}
