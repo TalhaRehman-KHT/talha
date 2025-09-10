@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Home, User, Award, FolderKanban, Mail, Code } from "lucide-react";
+import { Home, User, Award, FolderKanban, Mail } from "lucide-react";
 
 export default function Navbar() {
     return (
         <>
             {/* Navbar (visible only on lg and above) */}
             <nav className="nav hidden lg:flex">
-                {/* Logo */}
+                {/* Logo / About */}
                 <ul className="ul">
                     <li>
                         <Link className="anker" to="/about">
@@ -44,6 +44,7 @@ export default function Navbar() {
                         </Link>
                     </li>
                 </ul>
+
                 <ul className="ul">
                     <li></li>
                 </ul>
@@ -51,21 +52,21 @@ export default function Navbar() {
 
             {/* Footer (visible only on small screens) */}
             <footer className="footer">
-                <a className="anker" href="/">
+                <Link className="anker" to="/">
                     <Home size={22} />
-                </a>
-                <a className="anker" href="/about">
+                </Link>
+                <Link className="anker" to="/about">
                     <User size={22} />
-                </a>
-                <a className="anker" href="/certificates">
+                </Link>
+                <Link className="anker" to="/certificates">
                     <Award size={22} />
-                </a>
-                <a className="anker" href="/projects">
+                </Link>
+                <Link className="anker" to="/projects">
                     <FolderKanban size={22} />
-                </a>
-                <a className="anker" href="/contacts">
+                </Link>
+                <Link className="anker" to="/contacts">
                     <Mail size={22} />
-                </a>
+                </Link>
             </footer>
         </>
     );
