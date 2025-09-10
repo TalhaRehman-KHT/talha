@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Home, User, Award, FolderKanban, Mail, Code } from "lucide-react";
 
 export default function Navbar() {
@@ -9,38 +10,38 @@ export default function Navbar() {
                 {/* Logo */}
                 <ul className="ul">
                     <li>
-                        <a className="anker" href="/">
-                            <Code size={20} /> Logo
-                        </a>
+                        <Link className="anker" to="/about">
+                            <User size={20} /> About Me
+                        </Link>
                     </li>
                 </ul>
 
                 {/* Menu */}
                 <ul className="ul">
                     <li>
-                        <a className="anker" href="/">
+                        <Link className="anker" to="/">
                             <Home size={18} /> Home
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a className="anker" href="/about">
+                        <Link className="anker" to="/about">
                             <User size={18} /> About Me
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a className="anker" href="/certificates">
+                        <Link className="anker" to="/certificates">
                             <Award size={18} /> Certificates
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a className="anker" href="/projects">
+                        <Link className="anker" to="/projects">
                             <FolderKanban size={18} /> Projects
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a className="anker" href="/contacts">
+                        <Link className="anker" to="/contacts">
                             <Mail size={18} /> Contact
-                        </a>
+                        </Link>
                     </li>
                 </ul>
                 <ul className="ul">
