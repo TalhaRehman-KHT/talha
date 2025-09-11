@@ -1,9 +1,10 @@
 import profileImg from "../../assets/profile.jpg";
 import cert1 from "../../assets/certificate.jpeg";
 import cert2 from "../../assets/certificate2.jpeg";
+import cert3 from "../../assets/certificate.jpg";
 
 export default function Certificate() {
-    const certificates = [cert1, cert2];
+    const certificates = [cert1, cert2, cert3];
 
     return (
         <>
