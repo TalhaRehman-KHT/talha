@@ -1,0 +1,64 @@
+{
+    "profile": {
+        "name": "Talha Rehman",
+        "para": "Computer Science Student And part time Mern stack dev",
+        "p": "I am a passionate MERN stack developer with experience in building full-stack web applications. My future goal is to specialize in Artificial Intelligence and Machine Learning, applying AI to real-world problems and creating intelligent systems.",
+        "image": "/assets/profile.jpg"
+    },
+    "skills": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React",
+        "Tailwind CSS",
+        "Bootstrap",
+        "Node.js",
+        "Express.js",
+        "PostgreSQL",
+        "MongoDB",
+        "Supabase",
+        "Passport.js",
+        "Lucide React Icons"
+    ],
+    "certificates": [
+        "/assets/certificate.jpeg",
+        "/assets/certificate2.jpeg"
+    ],
+    "projects": [
+        {
+            "title": "Virtual R",
+            "description": "Dummy client site",
+            "image": "src/assets/vr.jpeg",
+            "live": "https://virtual-r-nine-flame.vercel.app",
+            "github": "https://github.com/TalhaRehman-KHT/VirtualR"
+        },
+        {
+            "title": "grocify",
+            "description": "A sigle page client site only.",
+            "image": "src/assets/grocify.jpeg",
+            "live": "https://grocify-one-rho.vercel.app",
+            "github": "https://github.com/TalhaRehman-KHT/Grocify"
+        },
+        {
+            "title": "Youga",
+            "description": "Youga Site client site dummy",
+            "image": "src/assets/yoga.jpeg",
+            "live": "https://yoga-cyan-gamma.vercel.app",
+            "github": "https://github.com/TalhaRehman-KHT/YOGA-"
+        },
+        {
+            "title": "E-Commerce Website",
+            "description": "A full-stack e-commerce app with React, Node, and MongoDB.",
+            "image": "src/assets/ecom.jpeg",
+            "live": "https://myecommerce.vercel.app",
+            "github": "https://github.com/TalhaRehman-KHT/SHOP-IT"
+        },
+        {
+            "title": "Quick Gpt",
+            "description": "Quick gpt Using Gemini APi",
+            "image": "src/assets/quick.png",
+            "live": "https://quick-gpt-client-azure.vercel.app",
+            "github": "https://github.com/TalhaRehman-KHT/quick-gpt"
+        }
+    ]
+}

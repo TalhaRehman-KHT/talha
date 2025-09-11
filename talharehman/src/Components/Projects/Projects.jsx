@@ -1,8 +1,6 @@
 import React from "react";
 import data from "../../assets/assets.json";
-import vr from '../../assets/vr.jpeg'
-import yoga from '../../assets/yoga.jpeg'
-import grocifu from '../../assets/grocify.jpeg'
+
 import { Globe, Github } from "lucide-react";
 
 export default function Projects() {

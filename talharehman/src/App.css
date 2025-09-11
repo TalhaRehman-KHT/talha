@@ -60,7 +60,7 @@ body {
   }
 
   .skills-container {
-    @apply flex flex-wrap gap-3 mt-6 justify-center lg:justify-start;
+    @apply flex flex-wrap gap-3 m-6 justify-center lg:justify-start;
   }
 
   .skill-badge {
