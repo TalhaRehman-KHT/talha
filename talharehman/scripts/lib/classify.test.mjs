@@ -52,7 +52,15 @@ describe('classifyCategory', () => {
   })
 
   it('falls back to Web App', () => {
-    expect(classifyCategory({ ...baseRepo, description: 'A dashboard tool' })).toBe('Web App')
+    expect(classifyCategory({ ...baseRepo, name: 'generic-app', description: 'A dashboard tool' })).toBe('Web App')
+  })
+
+  it('does not match keywords as substrings of unrelated words', () => {
+    expect(classifyCategory({ ...baseRepo, name: 'VirtualR', description: 'A portfolio site built using tailwind and react' })).toBe('Web App')
+  })
+
+  it('detects keywords in PascalCase repo names with no separators', () => {
+    expect(classifyCategory({ ...baseRepo, name: 'PharmacyStore', description: null })).toBe('E-commerce')
   })
 })
 

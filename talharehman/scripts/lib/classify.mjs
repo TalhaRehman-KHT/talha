@@ -19,10 +19,21 @@ const CATEGORY_RULES = [
   { category: 'E-commerce', keywords: ['ecommerce', 'e-commerce', 'shop', 'store', 'pharmacy', 'seller'] },
 ]
 
+function matchesKeyword(haystack, keyword) {
+  return new RegExp(`\\b${keyword}\\b`, 'i').test(haystack)
+}
+
+// Repo names are often PascalCase/camelCase with no separators (e.g. "PharmacyStore"), which
+// would otherwise hide keyword matches from word-boundary matching (no boundary between
+// "Pharmacy" and "Store"). Insert a space at lower-to-upper transitions so each word is isolated.
+function splitCamelCase(text) {
+  return text.replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+}
+
 export function classifyCategory(repo) {
-  const haystack = `${repo.description ?? ''}`.toLowerCase()
+  const haystack = `${splitCamelCase(repo.name ?? '')} ${repo.description ?? ''}`.toLowerCase()
   for (const rule of CATEGORY_RULES) {
-    if (rule.keywords.some((keyword) => haystack.includes(keyword))) {
+    if (rule.keywords.some((keyword) => matchesKeyword(haystack, keyword))) {
       return rule.category
     }
   }
