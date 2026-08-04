@@ -1,53 +1,33 @@
-import { useState } from 'react'
 import { Play, Pause, RotateCcw, Volume2 } from 'lucide-react'
-import { buildIntroScript } from '../../lib/buildIntroScript'
+import { getNarrationSections } from '../../lib/buildIntroScript'
+import { useAudioAvailability } from '../../hooks/useAudioAvailability'
+import { useAudioPlayer } from '../../hooks/useAudioPlayer'
 import { useSpeechSynthesis } from '../../hooks/useSpeechSynthesis'
 import { GlassCard } from '../ui/GlassCard'
 
-const SCRIPT = buildIntroScript()
+const SECTIONS = getNarrationSections()
+const AUDIO_SRC = '/audio/intro.mp3'
 
-// No pre-recorded intro.mp3 ships with this repo (none was supplied — see MIGRATION_PLAN.md
-// "Known unknowns"). This path only renders for browsers without the Web Speech API, and
-// degrades to an explanatory message if the file is genuinely absent.
-const AUDIO_FALLBACK_SRC = '/audio/intro.mp3'
+export function VoiceIntroPlayer() {
+  const audioAvailable = useAudioAvailability(AUDIO_SRC)
+  const useRecordedAudio = audioAvailable === true
 
-function AudioFallbackPlayer() {
-  const [unavailable, setUnavailable] = useState(false)
+  // Both hooks are always called (rules of hooks); each is a no-op unless it's the active path.
+  const audioControls = useAudioPlayer(AUDIO_SRC, useRecordedAudio)
+  const speechControls = useSpeechSynthesis(SECTIONS)
+  const { supported, isPlaying, isPaused, progress, volume, setVolume, play, pause, resume, replay } =
+    useRecordedAudio ? audioControls : speechControls
 
-  if (unavailable) {
+  // Still checking whether the recorded intro exists — avoid starting the wrong path.
+  if (audioAvailable === null) return null
+
+  if (!supported) {
     return (
       <GlassCard className="mx-auto max-w-md p-4 text-center text-sm text-white/50">
         Voice introduction isn&apos;t available in this browser, and no recorded fallback has
         been added yet.
       </GlassCard>
     )
-  }
-
-  return (
-    <GlassCard className="mx-auto flex max-w-md flex-col gap-2 p-4">
-      <p className="text-xs text-white/50">
-        Play Introduction — a short spoken intro about my background (recorded audio fallback).
-      </p>
-      <audio
-        controls
-        preload="none"
-        src={AUDIO_FALLBACK_SRC}
-        onError={() => setUnavailable(true)}
-        aria-label="Play recorded introduction"
-        className="w-full"
-      >
-        Your browser does not support the audio element.
-      </audio>
-    </GlassCard>
-  )
-}
-
-export function VoiceIntroPlayer() {
-  const { supported, isPlaying, isPaused, progress, volume, setVolume, play, pause, resume, replay } =
-    useSpeechSynthesis(SCRIPT)
-
-  if (!supported) {
-    return <AudioFallbackPlayer />
   }
 
   function handlePrimaryAction() {
