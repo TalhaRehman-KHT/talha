@@ -4,14 +4,20 @@ const EXCLUDED_NAME_PATTERNS = [
   /crud-with/i,
   /^taskapp$/i,
   /internship/i,
+  /^talha$/i, // this portfolio's own repo — never list itself as a project
 ]
+
+const COURSEWORK_DESCRIPTION_PATTERNS = [/\bassig(n|nment)/i, /\blab task\b/i]
 
 export function isExcludedRepo(repo) {
   if (repo.fork || repo.archived) return true
   if (EXCLUDED_NAME_PATTERNS.some((pattern) => pattern.test(repo.name))) return true
+  if (repo.description && COURSEWORK_DESCRIPTION_PATTERNS.some((pattern) => pattern.test(repo.description))) return true
 
-  const hasSignal = Boolean(repo.description) || Boolean(repo.homepage) || repo.size > 100
-  return !hasSignal
+  // No size fallback: a repo's on-disk size (lockfiles, node_modules metadata) is not a
+  // reliable signal of real portfolio work, and every legitimate repo in practice has either
+  // a description or a live homepage.
+  return !repo.description && !repo.homepage
 }
 
 const CATEGORY_RULES = [
