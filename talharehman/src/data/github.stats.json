@@ -1,0 +1,27 @@
+{
+  "publicRepos": 34,
+  "followers": 3,
+  "following": 19,
+  "topLanguages": [
+    {
+      "name": "JavaScript",
+      "count": 21
+    },
+    {
+      "name": "CSS",
+      "count": 4
+    },
+    {
+      "name": "HTML",
+      "count": 2
+    },
+    {
+      "name": "EJS",
+      "count": 2
+    },
+    {
+      "name": "Python",
+      "count": 1
+    }
+  ]
+}
