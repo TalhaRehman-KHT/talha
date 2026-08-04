@@ -30,8 +30,8 @@ export function Hero() {
         <img
           src={profile.avatar}
           alt={profile.name}
-          width={176}
-          height={176}
+          width={190}
+          height={190}
           fetchPriority="high"
           className="h-full w-full object-cover"
         />
