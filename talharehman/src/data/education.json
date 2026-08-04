@@ -1,5 +1,15 @@
 [
   {
+    "id": "kust-bscs",
+    "degree": "BS Computer Science",
+    "institution": "Kohat University of Science and Technology",
+    "location": "Kohat, Pakistan",
+    "startYear": "2022",
+    "endYear": "2026",
+    "cgpa": "3.2 / 4.0",
+    "status": "Completed"
+  },
+  {
     "id": "cs-degree",
     "institution": "[Add your institution name]",
     "degree": "[Add your degree/program]",

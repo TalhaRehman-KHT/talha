@@ -62,14 +62,24 @@ export function About() {
               <h3 className="font-semibold">Education</h3>
             </div>
             <ul className="flex flex-col gap-4">
-              {education.map((item) => (
-                <li key={item.id}>
-                  <p className="font-medium">{item.degree}</p>
-                  <p className="text-sm text-white/60 [html[data-theme=light]_&]:text-neutral-500">
-                    {item.institution} &middot; {item.dates}
-                  </p>
-                </li>
-              ))}
+              {education.map((item) => {
+                const dates = item.dates ?? `${item.startYear} – ${item.endYear}`
+                return (
+                  <li key={item.id}>
+                    <p className="font-medium">{item.degree}</p>
+                    <p className="text-sm text-white/60 [html[data-theme=light]_&]:text-neutral-500">
+                      {item.institution}
+                      {item.location && ` (${item.location})`} &middot; {dates}
+                    </p>
+                    {item.cgpa && (
+                      <p className="text-sm text-white/60 [html[data-theme=light]_&]:text-neutral-500">
+                        CGPA: {item.cgpa}
+                        {item.status && ` · ${item.status}`}
+                      </p>
+                    )}
+                  </li>
+                )
+              })}
             </ul>
           </GlassCard>
         </MotionDiv>

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "intro",
+    "text": "Hi, I'm Talha Rehman, a Full-Stack and Gen-AI Engineer based in Islamabad, Pakistan. I build full-stack web applications end to end, from database design to polished, responsive interfaces."
+  },
+  {
+    "id": "education",
+    "text": "I'm currently completing my BS in Computer Science at Kohat University of Science and Technology, from 2022 to 2026, with a CGPA of 3.2 out of 4.0."
+  },
+  {
+    "id": "experience",
+    "text": "Right now, I'm a Junior Software Engineer at LiveTalk on a contract basis, maintaining live production apps and building REST APIs. Before that, I completed a six-month internship at Brandora, where I delivered three full-stack products from scratch, including their corporate website and an internal attendance and task-tracking system."
+  },
+  {
+    "id": "skills",
+    "text": "My core stack is JavaScript, React, Node dot js, and Express, with MongoDB and PostgreSQL on the database side. I'm also expanding into AI tools like the Gemini API and prompt engineering."
+  },
+  {
+    "id": "projects",
+    "text": "For my Final Year Project, I built an AI-integrated pharmacy management system using the Gemini API, with medicine price prediction and a smart recommendation engine. I've also shipped other projects, like Shop-It, a full-stack e-commerce platform, and Quick GPT, an AI chat assistant."
+  },
+  {
+    "id": "closing",
+    "text": "That's a quick look at what I do. If you'd like to work together or just say hello, feel free to reach out through the contact section below."
+  }
+]

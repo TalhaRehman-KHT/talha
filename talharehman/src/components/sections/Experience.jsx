@@ -13,7 +13,7 @@ export function Experience() {
       <SectionHeading
         eyebrow="Experience"
         title="Where I've Worked"
-        subtitle="Internship and freelance work — entries marked Placeholder are awaiting confirmed details."
+        subtitle="Contract and internship roles building production web apps."
       />
 
       <div className="relative flex flex-col gap-8 border-l border-white/10 pl-8 [html[data-theme=light]_&]:border-black/10">
