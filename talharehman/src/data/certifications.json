@@ -1,0 +1,4 @@
+[
+  { "id": "cert-1", "title": "Certificate", "image": "/assets/certificate.jpeg", "issuer": "" },
+  { "id": "cert-2", "title": "Certificate", "image": "/assets/certificate2.jpeg", "issuer": "" }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "decodelabs-internship",
+    "company": "DecodeLabs",
+    "role": "[Add your role/title]",
+    "dates": "[Add start – end dates]",
+    "type": "internship",
+    "summary": "[Add a 1-2 line summary of what you built or worked on during this internship.]",
+    "placeholder": true
+  },
+  {
+    "id": "freelance",
+    "company": "Freelance",
+    "role": "Full-Stack Developer",
+    "dates": "[Add start date] – Present",
+    "type": "freelance",
+    "summary": "[Add a short summary of freelance/client work — e.g. VirtualR, Grocify, YOGA, PharmacyStore.]",
+    "placeholder": true
+  }
+]
