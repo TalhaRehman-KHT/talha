@@ -3,10 +3,69 @@
 
 <head>
   <meta charset="UTF-8" />
-  <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/jpeg" href="/assets/profile.jpg" />
+
+  <title>Talha Rehman — Full-Stack & GEN-AI Engineer</title>
+  <meta name="description" content="Portfolio of Talha Rehman, a full-stack MERN/PERN developer specializing in GEN-AI engineering. Explore projects, skills, and experience." />
+  <meta name="author" content="Talha Rehman" />
+  <link rel="canonical" href="https://talha-five.vercel.app/" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Talha Rehman — Full-Stack & GEN-AI Engineer" />
+  <meta property="og:description" content="Portfolio of Talha Rehman, a full-stack MERN/PERN developer specializing in GEN-AI engineering." />
+  <meta property="og:image" content="https://talha-five.vercel.app/assets/profile.jpg" />
+  <meta property="og:url" content="https://talha-five.vercel.app/" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Talha Rehman — Full-Stack & GEN-AI Engineer" />
+  <meta name="twitter:description" content="Portfolio of Talha Rehman, a full-stack MERN/PERN developer specializing in GEN-AI engineering." />
+  <meta name="twitter:image" content="https://talha-five.vercel.app/assets/profile.jpg" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Talha Rehman",
+    "jobTitle": "Full-Stack & GEN-AI Engineer",
+    "url": "https://talha-five.vercel.app/",
+    "image": "https://talha-five.vercel.app/assets/profile.jpg",
+    "email": "mailto:talhakhank51@gmail.com",
+    "sameAs": [
+      "https://github.com/TalhaRehman-KHT"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Talha Rehman — Portfolio",
+    "url": "https://talha-five.vercel.app/"
+  }
+  </script>
+
+  <!--
+    Runs before the stylesheet/app hydrate so the correct theme is applied on first paint
+    (no flash of the wrong theme on reload). Mirrors ThemeContext's storage key/logic exactly;
+    keep the two in sync if either changes.
+  -->
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('portfolio-theme');
+        var theme = stored === 'light' || stored === 'dark'
+          ? stored
+          : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (error) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
   <link rel="stylesheet" href="./src/index.css">
-  <title>Profile</title>
 </head>
 
 <body>
