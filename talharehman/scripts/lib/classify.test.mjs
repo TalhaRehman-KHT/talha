@@ -37,8 +37,20 @@ describe('isExcludedRepo', () => {
     expect(isExcludedRepo(baseRepo)).toBe(false)
   })
 
-  it('keeps large repos even without a description', () => {
+  it('keeps large repos even without a description, as long as a homepage exists', () => {
     expect(isExcludedRepo({ ...baseRepo, name: 'GreenSoq', description: null, homepage: 'https://green-soq.vercel.app', size: 4247 })).toBe(false)
+  })
+
+  it('excludes repos with no description and no homepage regardless of size', () => {
+    expect(isExcludedRepo({ ...baseRepo, name: 'Secrets', description: '', homepage: null, size: 5000 })).toBe(true)
+  })
+
+  it('excludes this portfolio repo itself by name', () => {
+    expect(isExcludedRepo({ ...baseRepo, name: 'talha', description: null, homepage: 'https://talha-five.vercel.app' })).toBe(true)
+  })
+
+  it('excludes repos whose description reads as lab/coursework, even with a homepage', () => {
+    expect(isExcludedRepo({ ...baseRepo, name: 'OOPS_in_python', description: 'Assigments  lab task  ', homepage: null })).toBe(true)
   })
 })
 

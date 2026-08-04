@@ -67,15 +67,20 @@
   {
     "id": "pharmacystore",
     "title": "PharmacyStore",
-    "description": "Full-stack pharmacy e-commerce platform.",
+    "description": "AI-integrated pharmacy management system (Final Year Project) with full CRUD inventory management, expiry tracking, and automated reminders.",
     "image": null,
     "github": "https://github.com/TalhaRehman-KHT/PharmacyStore",
     "live": "https://pharmacy-store-vert.vercel.app",
-    "tech": ["JavaScript"],
-    "features": ["Product catalog & ordering flow", "Full-stack e-commerce app"],
-    "category": "E-commerce",
+    "tech": ["React", "Node.js", "Express.js", "MongoDB", "Gemini API"],
+    "features": [
+      "Gemini API-powered medicine price prediction",
+      "AI alternative-medicine recommendation engine",
+      "Prescription-to-medication-schedule guidance module"
+    ],
+    "category": "AI / GenAI",
     "status": "Live",
-    "featured": false
+    "featured": true,
+    "finalYearProject": true
   },
   {
     "id": "greensoq",

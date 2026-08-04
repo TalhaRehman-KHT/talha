@@ -1,1 +1,51 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme {
+  --color-aurora-violet: #8b5cf6;
+  --color-aurora-cyan: #06b6d4;
+  --color-aurora-teal: #22d3ee;
+
+  --color-surface-dark: #05060a;
+  --color-surface-dark-elevated: #0b0f1a;
+  --color-surface-light: #f7f7fb;
+  --color-surface-light-elevated: #ffffff;
+
+  --radius-card: 1rem;
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --breakpoint-xs: 480px;
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-surface-dark text-white transition-colors duration-300;
+}
+
+html[data-theme="light"] body {
+  @apply bg-surface-light text-neutral-900;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
