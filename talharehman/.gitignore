@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local tooling / AI-assistant workspace — keep out of the public repo
+.claude/
+docs/superpowers/
+MIGRATION_PLAN.md

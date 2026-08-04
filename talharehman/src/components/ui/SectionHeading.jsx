@@ -14,7 +14,7 @@ export function SectionHeading({ eyebrow, title, subtitle }) {
       className="mb-10 flex flex-col gap-3 text-center sm:text-left"
     >
       {eyebrow && (
-        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-aurora-cyan">
+        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-aurora-cyan [html[data-theme=light]_&]:text-cyan-700">
           {eyebrow}
         </span>
       )}
