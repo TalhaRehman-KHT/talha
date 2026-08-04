@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { Github, Linkedin, Mail, ChevronDown } from 'lucide-react'
+import { Github, Linkedin, Mail, FileDown, ChevronDown } from 'lucide-react'
 import profile from '../../data/profile.json'
 import social from '../../data/social.json'
 import { useTypingEffect } from '../../hooks/useTypingEffect'
@@ -71,6 +71,16 @@ export function Hero() {
             Hire Me
           </Button>
         </MagneticButton>
+        {profile.resumePath && (
+          <Button
+            href={profile.resumePath}
+            download="Talha-Rehman-CV.pdf"
+            variant="ghost"
+            icon={<FileDown size={16} />}
+          >
+            Resume
+          </Button>
+        )}
         <Button href={social.github} variant="ghost" icon={<Github size={16} />}>
           GitHub
         </Button>
