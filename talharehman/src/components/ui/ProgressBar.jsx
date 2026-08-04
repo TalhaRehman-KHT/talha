@@ -1,4 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion'
+import { Counter } from './Counter'
 
 const MotionFill = motion.div
 
@@ -10,7 +11,9 @@ export function ProgressBar({ value, label }) {
       {label && (
         <div className="mb-1 flex items-center justify-between text-sm">
           <span>{label}</span>
-          <span className="text-white/60">{value}%</span>
+          <span className="text-white/60">
+            <Counter value={value} duration={1} />%
+          </span>
         </div>
       )}
       <div
