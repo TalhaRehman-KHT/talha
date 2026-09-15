@@ -16,5 +16,17 @@
     "title": "The Complete Full-Stack Web Development Bootcamp",
     "image": "/assets/certificate.jpg",
     "issuer": "Udemy"
+  },
+  {
+    "id": "cert-4",
+    "title": "Full Stack Web Engineer in 1 Year",
+    "image": "/assets/certificate-nitsep.png",
+    "issuer": "NITSEP"
+  },
+  {
+    "id": "cert-5",
+    "title": "Virtual Internship Program — Full Stack Development",
+    "image": "/assets/certificate-decodelabs.png",
+    "issuer": "DecodeLabs"
   }
 ]
