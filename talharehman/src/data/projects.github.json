@@ -1,5 +1,23 @@
 [
   {
+    "id": "zaiqa",
+    "title": "zaiqa",
+    "description": "Taste-based restaurant discovery for Pakistan 🍽️",
+    "image": null,
+    "github": "https://github.com/TalhaRehman-KHT/zaiqa",
+    "live": "https://zaiqa-zeta.vercel.app",
+    "tech": [
+      "JavaScript"
+    ],
+    "features": [],
+    "category": "Web App",
+    "status": "Live",
+    "featured": false,
+    "source": "github",
+    "stars": 0,
+    "updatedAt": "2026-08-17T09:36:49Z"
+  },
+  {
     "id": "pharmacystore",
     "title": "PharmacyStore",
     "description": "",
@@ -15,7 +33,43 @@
     "featured": false,
     "source": "github",
     "stars": 0,
-    "updatedAt": "2026-06-12T18:47:48Z"
+    "updatedAt": "2026-08-09T10:34:53Z"
+  },
+  {
+    "id": "hairstyle",
+    "title": "HairStyle-",
+    "description": "computer vision project",
+    "image": null,
+    "github": "https://github.com/TalhaRehman-KHT/HairStyle-",
+    "live": null,
+    "tech": [
+      "JavaScript"
+    ],
+    "features": [],
+    "category": "Web App",
+    "status": "In Progress",
+    "featured": false,
+    "source": "github",
+    "stars": 0,
+    "updatedAt": "2026-08-09T10:07:18Z"
+  },
+  {
+    "id": "taskhub",
+    "title": "taskhub",
+    "description": "react native app",
+    "image": null,
+    "github": "https://github.com/TalhaRehman-KHT/taskhub",
+    "live": null,
+    "tech": [
+      "TypeScript"
+    ],
+    "features": [],
+    "category": "Web App",
+    "status": "In Progress",
+    "featured": false,
+    "source": "github",
+    "stars": 0,
+    "updatedAt": "2026-08-07T19:24:20Z"
   },
   {
     "id": "shop-it",

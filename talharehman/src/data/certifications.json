@@ -1,4 +1,20 @@
 [
-  { "id": "cert-1", "title": "Certificate", "image": "/assets/certificate.jpeg", "issuer": "" },
-  { "id": "cert-2", "title": "Certificate", "image": "/assets/certificate2.jpeg", "issuer": "" }
+  {
+    "id": "cert-1",
+    "title": "Certificate of Internship — Backend Intern",
+    "image": "/assets/certificate.jpeg",
+    "issuer": "Digital Empowerment Network (DEN)"
+  },
+  {
+    "id": "cert-2",
+    "title": "Certificate of Internship — Backend Developer",
+    "image": "/assets/certificate2.jpeg",
+    "issuer": "Brandora"
+  },
+  {
+    "id": "cert-3",
+    "title": "The Complete Full-Stack Web Development Bootcamp",
+    "image": "/assets/certificate.jpg",
+    "issuer": "Udemy"
+  }
 ]

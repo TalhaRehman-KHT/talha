@@ -104,13 +104,13 @@ export function Projects() {
         </div>
 
         <label className="flex items-center gap-2 rounded-full border border-white/10 px-4 py-1.5 text-sm [html[data-theme=light]_&]:border-black/10">
-          <Search size={14} className="text-white/50" aria-hidden="true" />
+          <Search size={14} className="text-white/50 [html[data-theme=light]_&]:text-neutral-500" aria-hidden="true" />
           <span className="sr-only">Search projects or tech</span>
           <input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Search projects or tech..."
-            className="w-40 bg-transparent outline-none placeholder:text-white/40 sm:w-56"
+            className="w-40 bg-transparent outline-none placeholder:text-white/40 sm:w-56 [html[data-theme=light]_&]:placeholder:text-neutral-400"
           />
         </label>
       </div>

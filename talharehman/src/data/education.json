@@ -8,11 +8,5 @@
     "endYear": "2026",
     "cgpa": "3.2 / 4.0",
     "status": "Completed"
-  },
-  {
-    "id": "cs-degree",
-    "institution": "[Add your institution name]",
-    "degree": "[Add your degree/program]",
-    "dates": "[Add start – end dates]"
   }
 ]

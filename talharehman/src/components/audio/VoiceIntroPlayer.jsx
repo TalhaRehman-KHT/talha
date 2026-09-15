@@ -23,7 +23,7 @@ export function VoiceIntroPlayer() {
 
   if (!supported) {
     return (
-      <GlassCard className="mx-auto max-w-md p-4 text-center text-sm text-white/50">
+      <GlassCard className="mx-auto max-w-md p-4 text-center text-sm text-white/50 [html[data-theme=light]_&]:text-neutral-500">
         Voice introduction isn&apos;t available in this browser, and no recorded fallback has
         been added yet.
       </GlassCard>
@@ -49,13 +49,13 @@ export function VoiceIntroPlayer() {
         <button
           onClick={replay}
           aria-label="Replay introduction"
-          className="rounded text-white/60 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-aurora-cyan"
+          className="rounded text-white/60 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-aurora-cyan [html[data-theme=light]_&]:text-neutral-500 [html[data-theme=light]_&]:hover:text-neutral-900"
         >
           <RotateCcw size={16} aria-hidden="true" />
         </button>
 
         <div
-          className="h-1.5 flex-1 overflow-hidden rounded-full bg-white/10"
+          className="h-1.5 flex-1 overflow-hidden rounded-full bg-white/10 [html[data-theme=light]_&]:bg-black/10"
           role="progressbar"
           aria-valuenow={Math.round(progress * 100)}
           aria-valuemin={0}
@@ -65,7 +65,7 @@ export function VoiceIntroPlayer() {
           <div className="h-full rounded-full bg-aurora-cyan" style={{ width: `${progress * 100}%` }} />
         </div>
 
-        <Volume2 size={16} className="text-white/60" aria-hidden="true" />
+        <Volume2 size={16} className="text-white/60 [html[data-theme=light]_&]:text-neutral-500" aria-hidden="true" />
         <input
           type="range"
           min={0}
@@ -77,7 +77,7 @@ export function VoiceIntroPlayer() {
           className="w-16"
         />
       </div>
-      <p className="text-xs text-white/50">Play Introduction — a short spoken intro about my background.</p>
+      <p className="text-xs text-white/50 [html[data-theme=light]_&]:text-neutral-500">Play Introduction — a short spoken intro about my background.</p>
     </GlassCard>
   )
 }

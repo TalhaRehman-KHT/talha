@@ -140,7 +140,9 @@ export function Navbar() {
                   aria-current={activeId === item.id ? 'true' : undefined}
                   className={clsx(
                     'block w-full rounded-lg px-3 py-2 text-left text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-aurora-cyan',
-                    activeId === item.id ? 'bg-white/10 text-aurora-cyan' : 'text-white/80 [html[data-theme=light]_&]:text-neutral-700'
+                    activeId === item.id
+                      ? 'bg-white/10 text-aurora-cyan [html[data-theme=light]_&]:bg-black/5'
+                      : 'text-white/80 [html[data-theme=light]_&]:text-neutral-700'
                   )}
                 >
                   {item.label}

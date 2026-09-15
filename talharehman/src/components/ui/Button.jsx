@@ -3,7 +3,8 @@ import { motion } from 'framer-motion'
 
 const VARIANT_CLASSES = {
   primary: 'bg-gradient-to-r from-aurora-violet via-aurora-cyan to-aurora-teal text-white shadow-lg shadow-aurora-cyan/20',
-  ghost: 'border border-white/15 text-white/90 hover:border-white/30 dark:border-white/15 hover:bg-white/5',
+  ghost:
+    'border border-white/15 text-white/90 hover:border-white/30 dark:border-white/15 hover:bg-white/5 [html[data-theme="light"]_&]:border-black/15 [html[data-theme="light"]_&]:text-neutral-700 [html[data-theme="light"]_&]:hover:border-black/30 [html[data-theme="light"]_&]:hover:bg-black/5',
 }
 
 export function Button({ as = 'button', href, onClick, variant = 'primary', icon, children, className, ...rest }) {

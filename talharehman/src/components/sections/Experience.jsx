@@ -33,7 +33,9 @@ export function Experience() {
               <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
                 <h3 className="font-semibold">{entry.role} &middot; {entry.company}</h3>
                 <div className="flex items-center gap-2">
-                  {entry.placeholder && <Badge className="text-amber-300">Placeholder</Badge>}
+                  {entry.placeholder && (
+                    <Badge className="text-amber-300 [html[data-theme=light]_&]:text-amber-700">Placeholder</Badge>
+                  )}
                   <Badge>{entry.dates}</Badge>
                 </div>
               </div>

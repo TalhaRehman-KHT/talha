@@ -92,15 +92,22 @@ export function About() {
             </div>
             <div className="grid grid-cols-2 gap-3">
               {certifications.map((cert) => (
-                <img
-                  key={cert.id}
-                  src={cert.image}
-                  alt={cert.title}
-                  loading="lazy"
-                  width={200}
-                  height={112}
-                  className="aspect-video w-full rounded-lg object-cover"
-                />
+                <figure key={cert.id} className="flex flex-col gap-1.5">
+                  <img
+                    src={cert.image}
+                    alt={cert.title}
+                    loading="lazy"
+                    width={200}
+                    height={112}
+                    className="aspect-video w-full rounded-lg object-cover"
+                  />
+                  <figcaption className="text-xs leading-snug text-white/60 [html[data-theme=light]_&]:text-neutral-500">
+                    <span className="block font-medium text-white/80 [html[data-theme=light]_&]:text-neutral-700">
+                      {cert.title}
+                    </span>
+                    {cert.issuer && <span>{cert.issuer}</span>}
+                  </figcaption>
+                </figure>
               ))}
             </div>
           </GlassCard>

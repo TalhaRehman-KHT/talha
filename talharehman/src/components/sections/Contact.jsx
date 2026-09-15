@@ -84,7 +84,7 @@ export function Contact() {
         ))}
         <button
           onClick={handleCopyEmail}
-          className="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-sm text-white/90 hover:border-white/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-aurora-cyan [html[data-theme=light]_&]:border-black/10"
+          className="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-sm text-white/90 hover:border-white/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-aurora-cyan [html[data-theme=light]_&]:border-black/10 [html[data-theme=light]_&]:text-neutral-700 [html[data-theme=light]_&]:hover:border-black/30"
         >
           {copied ? <Check size={16} aria-hidden="true" /> : <Copy size={16} aria-hidden="true" />}
           {copied ? 'Copied!' : 'Copy Email'}

@@ -27,3 +27,6 @@ dist-ssr
 .claude/
 docs/superpowers/
 MIGRATION_PLAN.md
+
+# Generated reports — regenerate locally, don't commit
+lighthouse-report.json

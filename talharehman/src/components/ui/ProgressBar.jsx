@@ -11,13 +11,13 @@ export function ProgressBar({ value, label }) {
       {label && (
         <div className="mb-1 flex items-center justify-between text-sm">
           <span>{label}</span>
-          <span className="text-white/60">
+          <span className="text-white/60 [html[data-theme=light]_&]:text-neutral-500">
             <Counter value={value} duration={1} />%
           </span>
         </div>
       )}
       <div
-        className="h-2 w-full overflow-hidden rounded-full bg-white/10"
+        className="h-2 w-full overflow-hidden rounded-full bg-white/10 [html[data-theme=light]_&]:bg-black/10"
         role="progressbar"
         aria-valuenow={value}
         aria-valuemin={0}
