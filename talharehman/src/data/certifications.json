@@ -28,5 +28,11 @@
     "title": "Virtual Internship Program — Full Stack Development",
     "image": "/assets/certificate-decodelabs.png",
     "issuer": "DecodeLabs"
+  },
+  {
+    "id": "cert-6",
+    "title": "AI Engineer Core Track: LLM Engineering, RAG, QLoRA, Agents",
+    "image": "/assets/certificate-ai-engineer.jpg",
+    "issuer": "Udemy"
   }
 ]
