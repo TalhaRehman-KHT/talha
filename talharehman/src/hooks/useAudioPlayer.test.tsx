@@ -77,6 +77,25 @@ describe('useAudioPlayer', () => {
     expect(result.current.progress).toBe(1)
   })
 
+  it('seek() moves playback to that fraction of the recording', () => {
+    const { result } = renderHook(() => useAudioPlayer('/audio/intro.mp3', true))
+    act(() => result.current.play())
+    const audio = instances[0]
+    Object.defineProperty(audio, 'duration', { value: 40, configurable: true })
+    Object.defineProperty(audio, 'currentTime', { value: 0, writable: true, configurable: true })
+    act(() => result.current.seek(0.25))
+    expect(audio.currentTime).toBe(10)
+    expect(result.current.progress).toBe(0.25)
+    act(() => result.current.seek(0.1))
+    expect(audio.currentTime).toBe(4)
+  })
+
+  it('seek() before the recording has loaded is a no-op', () => {
+    const { result } = renderHook(() => useAudioPlayer('/audio/intro.mp3', true))
+    act(() => result.current.seek(0.5))
+    expect(result.current.progress).toBe(0)
+  })
+
   it('replay() resets currentTime to 0 and plays from the start', () => {
     const { result } = renderHook(() => useAudioPlayer('/audio/intro.mp3', true))
     act(() => result.current.play())

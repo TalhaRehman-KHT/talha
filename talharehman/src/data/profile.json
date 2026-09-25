@@ -6,8 +6,44 @@
     "GEN-AI Engineer",
     "Building intelligent, real-world web apps"
   ],
-  "summary": "I am a passionate MERN/PERN stack developer who builds full-stack web applications end to end, from database design to polished, responsive UI.",
+  "summary": "I build full-stack web applications end to end — from database design to a polished, responsive UI — and I'm now bringing AI into the products I ship. My AI engineering work spans RAG implementation, fine-tuning and comparing models, and building with the OpenAI and Anthropic APIs, plus n8n automation that connects LLMs to real business workflows. Currently maintaining live client products at LiveTalk.",
   "objective": "My focus is shifting toward Artificial Intelligence and Machine Learning — applying AI to real-world products and building intelligent systems on top of solid full-stack fundamentals.",
+  "background": "I have hands-on experience building and shipping production web applications using React.js, Node.js, Express.js, MongoDB, and PostgreSQL. I currently maintain live client products at LiveTalk, and previously delivered three internal products end to end during a six-month internship at Brandora — the company website, an internal office management tool, and an interactive web game. Recent work includes an ERP-style inventory and operations module built into an LLM-powered pharmacy platform (Final Year Project), a geospatial restaurant-discovery app, and n8n workflows that tie REST APIs, databases, and LLMs together to automate manual processes. I'm comfortable with ERP-style business systems, and I enjoy owning a feature end to end — from API design through UI to deployment — in an Agile team.",
+  "workingApproach": {
+    "title": "How I Work",
+    "subtitle": "The same loop on every project, from first call to long-term support.",
+    "steps": [
+      {
+        "step": "Understand the problem",
+        "description": "I dig into the actual business need before writing a line of code, and ask the questions that surface the real constraints."
+      },
+      {
+        "step": "Draft the requirements",
+        "description": "I turn that understanding into a clear objective and a written set of requirements, broken into concrete tasks."
+      },
+      {
+        "step": "Confirm the plan",
+        "description": "I walk the requirements back through the client or team and get agreement before building, so we don't pay for rework later."
+      },
+      {
+        "step": "Build in small changes",
+        "description": "Implementation ships in small, reviewable increments, so progress stays visible and course corrections stay cheap."
+      },
+      {
+        "step": "Test it",
+        "description": "Every change gets tested before it moves forward — edge cases, API contracts, and the paths real users take."
+      },
+      {
+        "step": "Deploy",
+        "description": "I take the tested work to production and verify it behaves the same way there as it did locally."
+      },
+      {
+        "step": "Own and maintain",
+        "description": "I stay responsible for what I ship and remain available for fixes, monitoring, and ongoing improvements."
+      }
+    ]
+  },
+  "availability": "Available immediately for onsite, remote, or hybrid roles.",
   "location": "Islamabad, Pakistan",
   "email": "talhakhank51@gmail.com",
   "avatar": "/assets/profile.jpg",

@@ -15,7 +15,7 @@ export function VoiceIntroPlayer() {
   // Both hooks are always called (rules of hooks); each is a no-op unless it's the active path.
   const audioControls = useAudioPlayer(AUDIO_SRC, useRecordedAudio)
   const speechControls = useSpeechSynthesis(SECTIONS)
-  const { supported, isPlaying, isPaused, progress, volume, setVolume, play, pause, resume, replay } =
+  const { supported, isPlaying, isPaused, progress, volume, setVolume, play, pause, resume, replay, seek } =
     useRecordedAudio ? audioControls : speechControls
 
   // Still checking whether the recorded intro exists — avoid starting the wrong path.
@@ -41,7 +41,7 @@ export function VoiceIntroPlayer() {
       <div className="flex items-center gap-3">
         <button
           onClick={handlePrimaryAction}
-          aria-label={isPlaying ? 'Pause introduction' : 'Play introduction'}
+          aria-label={isPlaying ? 'Pause introduction' : isPaused ? 'Resume introduction' : 'Play introduction'}
           className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-aurora-violet to-aurora-cyan text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
           {isPlaying ? <Pause size={16} aria-hidden="true" /> : <Play size={16} aria-hidden="true" />}
@@ -54,16 +54,17 @@ export function VoiceIntroPlayer() {
           <RotateCcw size={16} aria-hidden="true" />
         </button>
 
-        <div
-          className="h-1.5 flex-1 overflow-hidden rounded-full bg-white/10 [html[data-theme=light]_&]:bg-black/10"
-          role="progressbar"
-          aria-valuenow={Math.round(progress * 100)}
-          aria-valuemin={0}
-          aria-valuemax={100}
-          aria-label="Introduction playback progress"
-        >
-          <div className="h-full rounded-full bg-aurora-cyan" style={{ width: `${progress * 100}%` }} />
-        </div>
+        <input
+          type="range"
+          min={0}
+          max={1}
+          step="any"
+          value={progress}
+          onChange={(event) => seek(Number(event.target.value))}
+          aria-label="Seek introduction"
+          aria-valuetext={`${Math.round(progress * 100)}% played`}
+          className="h-1.5 min-w-0 flex-1 cursor-pointer accent-aurora-cyan"
+        />
 
         <Volume2 size={16} className="text-white/60 [html[data-theme=light]_&]:text-neutral-500" aria-hidden="true" />
         <input

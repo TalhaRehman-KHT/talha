@@ -4,6 +4,11 @@ const ABBREVIATIONS = [
   [/\bPERN\b/g, 'P E R N'],
   [/\bCGPA\b/g, 'C G P A'],
   [/\bAI\b/g, 'A I'],
+  [/\bOpenAI\b/g, 'Open A I'],
+  [/\bLLMs?\b/g, (match) => (match.endsWith('s') ? 'L L Ms' : 'L L M')],
+  [/\bERP\b/g, 'E R P'],
+  [/\bn8n\b/gi, 'n eight n'],
+  [/\.js\b/g, ' J S'],
 ]
 
 /**

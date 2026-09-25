@@ -18,6 +18,8 @@ interface SpeechControls {
   pause: () => void
   resume: () => void
   replay: () => void
+  /** Jump to a position between 0 (start) and 1 (end). */
+  seek: (fraction: number) => void
 }
 
 interface QueueItem {
@@ -58,6 +60,12 @@ export function useSpeechSynthesis(sections: NarrationSection[]): SpeechControls
   const isPlayingRef = useRef(false)
   const pauseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const resumeIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  // Bumped whenever speech is stopped. Utterance callbacks capture the value at
+  // speak time and ignore themselves if it has changed, because cancel() still
+  // fires onend/onerror on the utterance it interrupted.
+  const runIdRef = useRef(0)
+  // Sentence to (re)start from on resume.
+  const currentIndexRef = useRef(0)
 
   useEffect(() => {
     queueRef.current = buildQueue(sections)
@@ -90,16 +98,39 @@ export function useSpeechSynthesis(sections: NarrationSection[]): SpeechControls
     }
   }, [])
 
+  const startResumeInterval = useCallback(() => {
+    clearResumeInterval()
+    resumeIntervalRef.current = setInterval(() => {
+      // Chrome silently stops speech after ~15s on long utterances; nudging
+      // resume() keeps it going. Guarded so it never fights an explicit pause.
+      if (isPlayingRef.current) window.speechSynthesis.resume()
+    }, CHROME_RESUME_INTERVAL_MS)
+  }, [clearResumeInterval])
+
+  // Silences the engine and invalidates every callback of the current run.
+  const stopSpeech = useCallback(() => {
+    runIdRef.current += 1
+    clearPauseTimeout()
+    clearResumeInterval()
+    window.speechSynthesis.cancel()
+  }, [clearPauseTimeout, clearResumeInterval])
+
+  const finish = useCallback(() => {
+    isPlayingRef.current = false
+    setIsPlaying(false)
+    setIsPaused(false)
+    setProgress(1)
+    clearResumeInterval()
+  }, [clearResumeInterval])
+
   const speakIndex = useCallback(
     (index: number) => {
+      const runId = runIdRef.current
       const queue = queueRef.current
       const item = queue[index]
+      currentIndexRef.current = index
       if (!item) {
-        isPlayingRef.current = false
-        setIsPlaying(false)
-        setIsPaused(false)
-        setProgress(1)
-        clearResumeInterval()
+        finish()
         return
       }
 
@@ -110,65 +141,95 @@ export function useSpeechSynthesis(sections: NarrationSection[]): SpeechControls
       if (voiceRef.current) utterance.voice = voiceRef.current
 
       utterance.onend = () => {
+        if (runId !== runIdRef.current) return
         const completed = index + 1
+        currentIndexRef.current = completed
         setProgress(Math.min(1, completed / queue.length))
         if (completed >= queue.length) {
-          isPlayingRef.current = false
-          setIsPlaying(false)
-          setIsPaused(false)
-          setProgress(1)
-          clearResumeInterval()
+          finish()
           return
         }
         pauseTimeoutRef.current = setTimeout(() => speakIndex(completed), item.pauseAfterMs)
       }
 
+      utterance.onerror = (event) => {
+        if (runId !== runIdRef.current) return
+        if (event.error === 'interrupted' || event.error === 'canceled') return
+        // A real failure (e.g. synthesis-failed): stop instead of leaving the
+        // button stuck on "Pause" with nothing playing.
+        stopSpeech()
+        isPlayingRef.current = false
+        setIsPlaying(false)
+        setIsPaused(false)
+      }
+
       window.speechSynthesis.speak(utterance)
     },
-    [clearResumeInterval]
+    [finish, stopSpeech]
   )
 
   const play = useCallback(() => {
     if (!supported || queueRef.current.length === 0) return
-    clearPauseTimeout()
-    window.speechSynthesis.cancel()
+    stopSpeech()
     setProgress(0)
     isPlayingRef.current = true
     setIsPlaying(true)
     setIsPaused(false)
+    startResumeInterval()
     speakIndex(0)
+  }, [supported, speakIndex, stopSpeech, startResumeInterval])
 
-    clearResumeInterval()
-    resumeIntervalRef.current = setInterval(() => {
-      // Chrome silently stops speech after ~15s on long utterances; nudging
-      // resume() keeps it going. Guarded so it never fights an explicit pause.
-      if (isPlayingRef.current) window.speechSynthesis.resume()
-    }, CHROME_RESUME_INTERVAL_MS)
-  }, [supported, speakIndex, clearPauseTimeout, clearResumeInterval])
-
+  // Pause cancels rather than calling speechSynthesis.pause(): Chrome's Google
+  // voices ignore pause() or never come back from resume(), and a pause() that
+  // lands in the gap between sentences can't stop the timer for the next one.
+  // Resume re-speaks the interrupted sentence from its start.
   const pause = useCallback(() => {
-    if (!supported) return
-    window.speechSynthesis.pause()
+    if (!supported || !isPlayingRef.current) return
+    stopSpeech()
     isPlayingRef.current = false
     setIsPlaying(false)
     setIsPaused(true)
-  }, [supported])
+  }, [supported, stopSpeech])
 
   const resume = useCallback(() => {
-    if (!supported) return
-    window.speechSynthesis.resume()
+    if (!supported || isPlayingRef.current) return
     isPlayingRef.current = true
     setIsPlaying(true)
     setIsPaused(false)
-  }, [supported])
+    startResumeInterval()
+    speakIndex(currentIndexRef.current)
+  }, [supported, speakIndex, startResumeInterval])
 
   const replay = useCallback(() => {
     if (!supported) return
-    clearPauseTimeout()
-    window.speechSynthesis.cancel()
-    setProgress(0)
     play()
-  }, [supported, play, clearPauseTimeout])
+  }, [supported, play])
+
+  // Speech can't start mid-sentence, so seeking snaps to the start of the
+  // sentence under `fraction`. While playing it jumps straight there;
+  // otherwise it just moves the position and leaves the player paused, so the
+  // next resume() starts from it.
+  const seek = useCallback(
+    (fraction: number) => {
+      const total = queueRef.current.length
+      if (!supported || total === 0) return
+      const index = Math.min(total - 1, Math.max(0, Math.floor(fraction * total)))
+
+      if (isPlayingRef.current) {
+        if (index === currentIndexRef.current) return
+        stopSpeech()
+        setProgress(index / total)
+        startResumeInterval()
+        speakIndex(index)
+        return
+      }
+
+      currentIndexRef.current = index
+      setProgress(index / total)
+      setIsPaused(true)
+    },
+    [supported, speakIndex, stopSpeech, startResumeInterval]
+  )
 
   const setVolume = useCallback((next: number) => {
     volumeRef.current = next
@@ -177,26 +238,22 @@ export function useSpeechSynthesis(sections: NarrationSection[]): SpeechControls
 
   useEffect(() => {
     return () => {
-      clearPauseTimeout()
-      clearResumeInterval()
-      if (supported) window.speechSynthesis.cancel()
+      if (supported) stopSpeech()
     }
-  }, [supported, clearPauseTimeout, clearResumeInterval])
+  }, [supported, stopSpeech])
 
   useEffect(() => {
     if (!supported) return
     function handleVisibilityChange() {
       if (document.visibilityState !== 'hidden') return
-      clearPauseTimeout()
-      clearResumeInterval()
-      window.speechSynthesis.cancel()
+      stopSpeech()
       isPlayingRef.current = false
       setIsPlaying(false)
       setIsPaused(false)
     }
     document.addEventListener('visibilitychange', handleVisibilityChange)
     return () => document.removeEventListener('visibilitychange', handleVisibilityChange)
-  }, [supported, clearPauseTimeout, clearResumeInterval])
+  }, [supported, stopSpeech])
 
-  return { supported, isPlaying, isPaused, progress, volume, setVolume, play, pause, resume, replay }
+  return { supported, isPlaying, isPaused, progress, volume, setVolume, play, pause, resume, replay, seek }
 }

@@ -1,26 +1,34 @@
 [
   {
     "id": "intro",
-    "text": "Hi, I'm Talha Rehman, a Full-Stack and Gen-AI Engineer based in Islamabad, Pakistan. I build full-stack web applications end to end, from database design to polished, responsive interfaces."
-  },
-  {
-    "id": "education",
-    "text": "I'm currently completing my BS in Computer Science at Kohat University of Science and Technology, from 2022 to 2026, with a CGPA of 3.2 out of 4.0."
+    "text": "Hi, I'm Talha Rehman, a Full-Stack Software Engineer based in Islamabad, Pakistan."
   },
   {
     "id": "experience",
-    "text": "Right now, I'm a Junior Software Engineer at LiveTalk on a contract basis, maintaining live production apps and building REST APIs. Before that, I completed a six-month internship at Brandora, where I delivered three full-stack products from scratch, including their corporate website and an internal attendance and task-tracking system."
+    "text": "I have around two years of hands-on experience building and shipping production web applications using React, Node.js, Express, MongoDB, and PostgreSQL — commonly known as the MERN and PERN stacks. I also work with Next.js for building fast, scalable frontend applications."
   },
   {
-    "id": "skills",
-    "text": "My core stack is JavaScript, React, Node dot js, and Express, with MongoDB and PostgreSQL on the database side. I'm also expanding into AI tools like the Gemini API and prompt engineering."
+    "id": "roles",
+    "text": "Currently, I maintain live client products at LiveTalk. Before that, I spent six months at Brandora, where I delivered three internal products end to end — including the company website, an internal office management tool, and an interactive web game."
   },
   {
-    "id": "projects",
-    "text": "For my Final Year Project, I built an AI-integrated pharmacy management system using the Gemini API, with medicine price prediction and a smart recommendation engine. I've also shipped other projects, like Shop-It, a full-stack e-commerce platform, and Quick GPT, an AI chat assistant."
+    "id": "llm",
+    "text": "Recently, I've been focused on LLM engineering and Retrieval-Augmented Generation, or RAG. I've built an ERP-style inventory and operations module inside an LLM-powered pharmacy platform as my final year project, along with a geospatial restaurant-discovery app."
+  },
+  {
+    "id": "models",
+    "text": "I work with OpenAI APIs, Ollama models, and the Anthropic API — creating, fine-tuning, and comparing different models to find the most business-efficient and cost-effective solution for a client's specific problem."
+  },
+  {
+    "id": "automation",
+    "text": "I also build automation pipelines using n8n, connecting REST APIs, databases, and LLMs together to automate manual, repetitive tasks."
+  },
+  {
+    "id": "workstyle",
+    "text": "I enjoy owning a feature end to end — from API design, through the user interface, to deployment — while working in an Agile team."
   },
   {
     "id": "closing",
-    "text": "That's a quick look at what I do. If you'd like to work together or just say hello, feel free to reach out through the contact section below."
+    "text": "I'm available immediately for onsite, remote, or hybrid roles. Let's build something great together."
   }
 ]

@@ -22,6 +22,12 @@ describe('sanitizeForSpeech', () => {
     )
   })
 
+  it('reads .js framework names, LLM, ERP, n8n and OpenAI the way a developer says them', () => {
+    expect(
+      sanitizeForSpeech('React, Node.js and Next.js. LLM engineering, an ERP module, n8n pipelines and OpenAI APIs.')
+    ).toBe('React, Node J S and Next J S. L L M engineering, an E R P module, n eight n pipelines and Open A I APIs.')
+  })
+
   it('strips generic slashes', () => {
     expect(sanitizeForSpeech('client/server model')).toBe('client server model')
   })

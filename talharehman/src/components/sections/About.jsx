@@ -1,5 +1,18 @@
-import { motion } from 'framer-motion'
-import { GraduationCap, Award, GitFork, Users, UserPlus } from 'lucide-react'
+import { motion, useReducedMotion } from 'framer-motion'
+import {
+  GraduationCap,
+  Award,
+  GitFork,
+  Users,
+  UserPlus,
+  Search,
+  ClipboardList,
+  CheckCircle2,
+  Code2,
+  FlaskConical,
+  Rocket,
+  LifeBuoy,
+} from 'lucide-react'
 import profile from '../../data/profile.json'
 import education from '../../data/education.json'
 import certifications from '../../data/certifications.json'
@@ -17,17 +30,75 @@ const STATS = [
   { key: 'following', label: 'Following', Icon: UserPlus },
 ]
 
+// Icons follow the order of profile.workingApproach.steps
+const STEP_ICONS = [Search, ClipboardList, CheckCircle2, Code2, FlaskConical, Rocket, LifeBuoy]
+
 export function About() {
+  const reduceMotion = useReducedMotion()
+  const workingApproach = profile.workingApproach
+
   return (
     <section id="about" className="mx-auto max-w-5xl px-6 py-24">
+      {/* Objective is the lead-in. The hero already carries the short summary,
+          so only the longer background paragraph is repeated here. */}
       <SectionHeading eyebrow="About Me" title="Who I Am" subtitle={profile.objective} />
 
-      <p className="mb-8 max-w-3xl text-white/80 [html[data-theme=light]_&]:text-neutral-700">
-        {profile.summary}
+      <p className="mb-14 max-w-3xl text-white/80 [html[data-theme=light]_&]:text-neutral-700">
+        {profile.background}
       </p>
 
+      {workingApproach?.steps?.length > 0 && (
+        <MotionDiv
+          initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-12"
+        >
+          <GlassCard className="p-6 sm:p-8">
+            <h3 className="text-xl font-semibold">{workingApproach.title}</h3>
+            {workingApproach.subtitle && (
+              <p className="mt-1 max-w-2xl text-sm text-white/55 [html[data-theme=light]_&]:text-neutral-500">
+                {workingApproach.subtitle}
+              </p>
+            )}
+
+            <ol className="mt-8 flex flex-col">
+              {workingApproach.steps.map((item, index) => {
+                const Icon = STEP_ICONS[index] ?? CheckCircle2
+                const isLast = index === workingApproach.steps.length - 1
+
+                return (
+                  <li key={item.step} className="relative flex gap-4 pb-8 last:pb-0">
+                    {!isLast && (
+                      <span
+                        aria-hidden="true"
+                        className="absolute left-[19px] top-10 bottom-0 w-px bg-gradient-to-b from-aurora-cyan/40 to-transparent"
+                      />
+                    )}
+                    <span className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-aurora-cyan/30 bg-aurora-cyan/10 text-aurora-cyan">
+                      <Icon size={18} aria-hidden="true" />
+                    </span>
+                    <div className="pt-1">
+                      <p className="font-medium">
+                        <span className="mr-2 text-sm tabular-nums text-aurora-cyan">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        {item.step}
+                      </p>
+                      <p className="mt-1 max-w-2xl text-sm leading-relaxed text-white/60 [html[data-theme=light]_&]:text-neutral-600">
+                        {item.description}
+                      </p>
+                    </div>
+                  </li>
+                )
+              })}
+            </ol>
+          </GlassCard>
+        </MotionDiv>
+      )}
+
       <MotionDiv
-        initial={{ opacity: 0, y: 16 }}
+        initial={reduceMotion ? false : { opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         className="mb-12"
@@ -41,7 +112,9 @@ export function About() {
                   <p className="text-2xl font-bold">
                     <Counter value={githubStats[stat.key]} />
                   </p>
-                  <p className="text-xs text-white/50 [html[data-theme=light]_&]:text-neutral-500">{stat.label}</p>
+                  <p className="text-xs text-white/50 [html[data-theme=light]_&]:text-neutral-500">
+                    {stat.label}
+                  </p>
                 </div>
               </div>
             ))}
@@ -55,7 +128,11 @@ export function About() {
       </MotionDiv>
 
       <div className="grid gap-8 sm:grid-cols-2">
-        <MotionDiv initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+        <MotionDiv
+          initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
           <GlassCard className="h-full p-6">
             <div className="mb-4 flex items-center gap-2 text-aurora-cyan">
               <GraduationCap size={20} aria-hidden="true" />
@@ -84,7 +161,12 @@ export function About() {
           </GlassCard>
         </MotionDiv>
 
-        <MotionDiv initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
+        <MotionDiv
+          initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+        >
           <GlassCard className="h-full p-6">
             <div className="mb-4 flex items-center gap-2 text-aurora-cyan">
               <Award size={20} aria-hidden="true" />

@@ -20,7 +20,10 @@ export function Hero() {
   })
 
   return (
-    <section id="home" className="relative flex min-h-screen flex-col items-center justify-center gap-8 px-6 pt-24 text-center">
+    <section
+      id="home"
+      className="relative flex min-h-screen flex-col items-center justify-center gap-8 px-6 pt-24 text-center"
+    >
       <MotionDiv
         initial={reduceMotion ? false : { opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -51,14 +54,26 @@ export function Hero() {
         {!reduceMotion && <span className="animate-pulse">|</span>}
       </p>
 
+      {/* Short intro only. The detailed background lives in the About section. */}
       <MotionP
         initial={reduceMotion ? false : { opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="max-w-2xl text-white/70 [html[data-theme=light]_&]:text-neutral-600"
+        className="max-w-xl text-balance text-white/70 [html[data-theme=light]_&]:text-neutral-600"
       >
         {profile.summary}
       </MotionP>
+
+      {profile.availability && (
+        <MotionP
+          initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.25 }}
+          className="-mt-4 text-sm text-white/45 [html[data-theme=light]_&]:text-neutral-500"
+        >
+          {profile.availability}
+        </MotionP>
+      )}
 
       <MotionDiv
         initial={reduceMotion ? false : { opacity: 0, y: 16 }}

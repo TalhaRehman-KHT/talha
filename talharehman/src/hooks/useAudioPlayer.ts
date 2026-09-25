@@ -11,6 +11,8 @@ interface AudioControls {
   pause: () => void
   resume: () => void
   replay: () => void
+  /** Jump to a position between 0 (start) and 1 (end). */
+  seek: (fraction: number) => void
 }
 
 /**
@@ -87,7 +89,17 @@ export function useAudioPlayer(src: string, enabled: boolean): AudioControls {
     setIsPaused(false)
   }, [])
 
+  const seek = useCallback((fraction: number) => {
+    const audio = audioRef.current
+    if (!audio || !audio.duration) return
+    const clamped = Math.min(1, Math.max(0, fraction))
+    audio.currentTime = clamped * audio.duration
+    setProgress(clamped)
+    // Not playing: park here so the primary button resumes instead of restarting.
+    if (audio.paused) setIsPaused(true)
+  }, [])
+
   const setVolume = useCallback((next: number) => setVolumeState(next), [])
 
-  return { supported: enabled, isPlaying, isPaused, progress, volume, setVolume, play, pause, resume, replay }
+  return { supported: enabled, isPlaying, isPaused, progress, volume, setVolume, play, pause, resume, replay, seek }
 }
